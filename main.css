@@ -8,7 +8,10 @@ body {
   font-family: 'Patua One', serif;
   font-size: 32px;
   background-color: rgb(208, 231, 226);
-  color: rgb(75, 15, 121);
+  background-image: url('./Hangmans-Noose1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgb(222, 207, 182);
   height: 100vh;
   overflow: hidden;
 }
@@ -35,7 +38,7 @@ h1 {
   display: inline-block;
   width: 0.5em;
   text-align: center;
-  border-bottom: 5px solid rgb(75, 15, 121);
+  border-bottom: 5px solid rgb(222, 207, 182);
   color: transparent;
   margin: 0 0.05em;
 }
@@ -79,7 +82,10 @@ h1 {
   flex-direction: column;
   text-align: center;
   align-items: center;
-  background-color: rgb(139, 184, 23);
+  background-image: url('./Hangmans-Noose1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background-color: rgb(139, 184, 23);*/
   transform: translateY(0%);
   transition: transform 0.25s linear;
 }
@@ -95,8 +101,8 @@ h1 {
 .reset button {
   justify-content: center;
   font-size: 2em;
-  background-color: rgb(75, 15, 121);
-  color: rgb(139, 184, 23);
+  background-color: rgb(44, 44, 44);
+  color: rgb(222, 207, 182);
   margin-top: 50px;
 }
 .modal h1 {
