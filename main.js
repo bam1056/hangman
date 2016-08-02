@@ -5,14 +5,250 @@
 //         show the modal with a success message.
 // NOTE: No counter exists!
 // TODO: Pick a word from a random list of words.
+const wordArray =
+[ 'ADULT',
+  'AIR',
+  'AIRCRAFT',
+  'AIRPORT',
+  'ALBUM',
+  'ALPHABET',
+  'APPLE',
+  'ARM',
+  'ARMY',
+  'BABY',
+  'BABY',
+  'BACKPACK',
+  'BALLOON',
+  'BANANA',
+  'BANK',
+  'BARBECUE',
+  'BATHROOM',
+  'BATHTUB',
+  'BED',
+  'BED',
+  'BEE',
+  'BIBLE',
+  'BIBLE',
+  'BIRD',
+  'BOMB',
+  'BOOK',
+  'BOSS',
+  'BOTTLE',
+  'BOWL',
+  'BOX',
+  'BOY',
+  'BRAIN',
+  'BRIDGE',
+  'BUTTERFLY',
+  'BUTTON',
+  'CAPPUCCINO',
+  'CAR',
+  'CARPET',
+  'CARROT',
+  'CAVE',
+  'CHAIR',
+  'CHIEF',
+  'CHILD',
+  'CHISEL',
+  'CHOCOLATES',
+  'CHURCH',
+  'CHURCH',
+  'CIRCLE',
+  'CIRCUS',
+  'CIRCUS',
+  'CLOCK',
+  'CLOWN',
+  'COFFEE',
+  'COFFEESHOP',
+  'COMET',
+  'COMPASS',
+  'COMPUTER',
+  'CRYSTAL',
+  'CUP',
+  'CYCLE',
+  'DATA',
+  'DESK',
+  'DIAMOND',
+  'DRESS',
+  'DRILL',
+  'DRINK',
+  'DRUM',
+  'DUNG',
+  'EARS',
+  'EARTH',
+  'EGG',
+  'ELECTRICITY',
+  'ELEPHANT',
+  'ERASER',
+  'EXPLOSIVE',
+  'EYES',
+  'FAMILY',
+  'FAN',
+  'FEATHER',
+  'FESTIVAL',
+  'FILM',
+  'FINGER',
+  'FIRE',
+  'FLOODLIGHT',
+  'FLOWER',
+  'FOOT',
+  'FORK',
+  'FREEWAY',
+  'FRUIT',
+  'FUNGUS',
+  'GAME',
+  'GARDEN',
+  'GAS',
+  'GATE',
+  'GEMSTONE',
+  'GIRL',
+  'GLOVES',
+  'GOD',
+  'GRAPES',
+  'GUITAR',
+  'HAMMER',
+  'HAT',
+  'HIEROGLYPH',
+  'HIGHWAY',
+  'HOROSCOPE',
+  'HORSE',
+  'HOSE',
+  'ICE',
+  'INSECT',
+  'JUNK',
+  'KALEIDOSCOPE',
+  'KITCHEN',
+  'KNIFE',
+  'LEATHER',
+  'LEG',
+  'LIBRARY',
+  'LIQUID',
+  'MAGNET',
+  'MAN',
+  'MAP',
+  'MAZE',
+  'MEAT',
+  'METEOR',
+  'MICROSCOPE',
+  'MILK',
+  'MILKSHAKE',
+  'MIST',
+  'MONEY',
+  'MONSTER',
+  'MOSQUITO',
+  'MOUTH',
+  'NAIL',
+  'NAVY',
+  'NECKLACE',
+  'NEEDLE',
+  'ONION',
+  'PAINTBRUSH',
+  'PANTS',
+  'PARACHUTE',
+  'PASSPORT',
+  'PEBBLE',
+  'PENDULUM',
+  'PEPPER',
+  'PERFUME',
+  'PILLOW',
+  'PLANE',
+  'PLANET',
+  'POCKET',
+  'POST',
+  'POTATO',
+  'PRINTER',
+  'PRISON',
+  'PYRAMID',
+  'RADAR',
+  'RAINBOW',
+  'RECORD',
+  'RESTAURANT',
+  'RIFLE',
+  'RING',
+  'ROBOT',
+  'ROCK',
+  'ROCKET',
+  'ROOF',
+  'ROOM',
+  'ROPE',
+  'SADDLE',
+  'SALT',
+  'SANDPAPER',
+  'SANDWICH',
+  'SATELLITE',
+  'SCHOOL',
+  'SEX',
+  'SHIP',
+  'SHOES',
+  'SHOP',
+  'SHOWER',
+  'SIGNATURE',
+  'SKELETON',
+  'SLAVE',
+  'SNAIL',
+  'SOFTWARE',
+  'SOLID',
+  'SPACE',
+  'SHUTTLE',
+  'SPECTRUM',
+  'SPHERE',
+  'SPICE',
+  'SPIRAL',
+  'SPOON',
+  'SPORTS',
+  'SQUARE',
+  'STAIRCASE',
+  'STAR',
+  'STOMACH',
+  'SUN',
+  'SUNGLASSES',
+  'SURVEYOR',
+  'SWIMMING',
+  'SWORD',
+  'TABLE',
+  'TAPESTRY',
+  'TEETH',
+  'TELESCOPE',
+  'TELEVISION',
+  'TENNIS',
+  'THERMOMETER',
+  'TIGER',
+  'TOILET',
+  'TONGUE',
+  'TORCH',
+  'TORPEDO',
+  'TRAIN',
+  'TREADMILL',
+  'TRIANGLE',
+  'TUNNEL',
+  'TYPEWRITER',
+  'UMBRELLA',
+  'VACUUM',
+  'VAMPIRE',
+  'VIDEOTAPE',
+  'VULTURE',
+  'WATER',
+  'WEAPON',
+  'WEB',
+  'WHEELCHAIR',
+  'WINDOW',
+  'WOMAN',
+  'WORM' ]
 
-const wordString = 'JAVASCRIPT'
+let counter = 0
+let solved = 0
+let wordString
 
 // When the click event fires, this function will be called,
 //   and the actual `MouseEvent` object will be passed as an
 //   argurment, we'll call it `event`
+const chooseWord = (wordArray) => {
+  let choice = wordArray[Math.floor(Math.random() * wordArray.length)]
+  console.log(choice)
+  return choice
+}
 const handleLetterClick = (event) => {
-  // The event's target property is a reference to the actuall
+  // The event's target property is a reference to the actual
   //   button node that was clicked.
   const button = event.target
   // The button's textContent property is the character we
@@ -26,22 +262,68 @@ const handleLetterClick = (event) => {
   // Collect ALL of the spans in the <div class="word"> node
   const letters = document.querySelectorAll('.word span')
 
+  let matched = false
   // For each number, 0 through the number of spans, as i
   for (let i = 0; i < letters.length; i++) {
     // Check if the span at position `i` in the word matches
     //   the letter that got clicked.
     if (letters[i].textContent === letter) {
       // If it did, reveal the letter.
-      letter.className = 'revealed'
+      letters[i].className = 'revealed'
+      matched = true
+      solved++
+      if (solved >= letters.length) {
+        document.querySelector('.modal.hidden').className = 'modal'
+        document.querySelector('.modal h1').textContent = `YOU WIN!! THE WORD WAS "${wordString}"`
+      }
+    }
+  }
+  if (!matched) {
+    counter++
+    let img = document.createElement('img')
+    switch (counter) {
+      case 1: img.src = './hang1.png'
+        break
+      case 2: img.src = './hang2.png'
+        break
+      case 3: img.src = './hang3.png'
+        break
+      case 4: img.src = './hang4.png'
+        break
+      case 5: img.src = './hang5.png'
+        break
+      case 6: img.src = './hang6.png'
+        break
+      case 7: img.src = './hang7.png'
+        break
+      default: document.querySelector('.counter').textContent = 'ERROR'
+    }
+    let src = document.querySelector('.counter')
+    let existingChild = src.lastChild
+    if (existingChild) {
+      src.removeChild(existingChild)
+    }
+    src.appendChild(img)
+
+    if (counter >= 7) {
+      document.querySelector('.modal.hidden').className = 'modal'
+      document.querySelector('.modal h1').textContent = `YOU LOSE!! THE CORRECT WORD WAS "${wordString}"`
     }
   }
 }
 
 const init = () => {
+  wordString = chooseWord(wordArray)
   // Find the HTML node `<div class="input">`
   const inputs = document.querySelector('.input')
   // Find the HTML node `<div class="word">`
   const word = document.querySelector('.word')
+
+  const reset = document.querySelector('.resetButton')
+
+  reset.addEventListener('click', () => {
+    window.location.reload()
+  })
 
   // For each number, 0 through 25, as `i`
   for (let i = 0; i < 26; i++) {
