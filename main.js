@@ -299,6 +299,8 @@ const handleLetterClick = (event) => {
       default: document.querySelector('.counter').textContent = 'ERROR'
     }
     let src = document.querySelector('.counter')
+    img.width = '500'
+    img.height = '500'
     let existingChild = src.lastChild
     if (existingChild) {
       src.removeChild(existingChild)
