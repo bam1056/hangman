@@ -28,7 +28,9 @@ main {
 h1 {
   margin: 0 auto;
 }
-
+.names {
+  display: flex;
+}
 .word {
   font-family: 'Amatic SC', cursive;
   font-size: 3em;
